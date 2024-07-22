@@ -1,0 +1,13 @@
+use v6.d;
+use Test;
+
+use lib <. lib>;
+use Math::SpecialFunctions;
+
+is binomial(10, 4), 210;
+
+is binomial(100, 4), 3921225;
+
+is binomial(343, 46), 3238577992203910571755782741366130655419769562468498292260;
+
+done-testing;
