@@ -28,38 +28,23 @@ Here are example usage for the currently implemented functions:
 use Math::SpecialFunctions;
 factorial(10)
 ```
-```
-# 3628800
-```
 
 ```perl6
 binomial(10, 6)
-```
-```
-# 210
 ```
 
 ```perl6
 bernoulli-b(10).nude
 ```
-```
-# (5 66)
-```
 
 ```perl6
 gamma(0.3)
-```
-```
-# 2.991568987687589
 ```
 
 For Gamma function also `Γ` can be used:
 
 ```perl6
 Γ(0.3)
-```
-```
-# 2.991568987687589
 ```
 
 -------
