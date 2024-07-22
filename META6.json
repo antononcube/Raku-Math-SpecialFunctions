@@ -1,7 +1,7 @@
 {
   "name": "Math::SpecialFunctions",
   "description": "Raku package for mathematical special functions.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "authors": [
     "Anton Antonov"
   ],
@@ -18,16 +18,16 @@
   "license": "Artistic-2.0",
   "tags": [
     "bernoulli",
+    "bernoulli-b",
     "binomial",
     "factorial",
-    "functions",
     "functions",
     "gamma",
     "math",
     "special",
     "special function"
   ],
-  "api": "0",
+  "api": "1",
   "source-url": "https://github.com/antononcube/Raku-Math-SpecialFunctions.git",
   "raku": "6.d"
 }
