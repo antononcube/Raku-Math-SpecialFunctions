@@ -40,7 +40,7 @@ multi sub binomial(Int $n, Int $k) {
 
 #------------------------------------------------------------
 # Taken from https://rosettacode.org/wiki/Bernoulli_numbers#With_memoization
-constant bernoulli = gather {
+my $bernoulli = gather {
     my @a;
     for 0 ..* -> $m {
         @a = FatRat.new(1, $m + 1),
@@ -55,10 +55,11 @@ constant bernoulli = gather {
 # bernoulli is a lazy sequence of pairs. Each pair is BernoulliB number index to corresponding value.
 
 sub bernoulli-b(UInt $n) is export {
-    given $n {
+    return do given $n {
+        when 0 { 1 }
         when 1 { -1 / 2 }
-        when $n % 2 { 0 }
-        default { bernoulli[$n / 2 + 1].value }
+        when $_ % 2 { 0 }
+        default { $bernoulli[($_ + 2) / 2].value }
     }
 }
 
