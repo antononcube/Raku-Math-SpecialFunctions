@@ -1,4 +1,4 @@
-# Raku-Math-SpecialFunctions
+# Math::SpecialFunctions
 
 Raku package for mathematical special functions.
 
