@@ -1,0 +1,15 @@
+use v6.d;
+use Test;
+
+use lib <. lib>;
+use Math::SpecialFunctions;
+
+is bernoulli-b(0), 1;
+
+is bernoulli-b(1), -1/2;
+
+is bernoulli-b(10), 5 / 66;
+
+is bernoulli-b(100), -94598037819122125295227433069493721872702841533066936133385696204311395415197247711 / 33330;
+
+done-testing;
