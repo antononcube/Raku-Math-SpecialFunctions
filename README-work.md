@@ -66,8 +66,8 @@ bernoulli-b(60).nude
 ### Gamma function
 
 - The implementation uses approximation formula with machine numbers.
-- `Γ(z + 1) = z * Γ(z)`
 - Both function names `gamma` and  `Γ` can be used.
+- The property `Γ(z + 1) = z * Γ(z)` holds.
 
 Synonyms demo:
 
@@ -75,7 +75,7 @@ Synonyms demo:
 [gamma(0.3), Γ(0.3)]
 ```
 
-Show that the formula above holds:
+Show that the property above holds:
 
 ```perl6
 gamma(2.3) - 1.3 * gamma(1.3)
