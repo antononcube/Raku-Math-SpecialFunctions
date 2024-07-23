@@ -1,5 +1,7 @@
 use v6.d;
 
+unit module Math::SpecialFunctions;
+
 #------------------------------------------------------------
 proto sub factorial(Int $n) is export {*}
 
