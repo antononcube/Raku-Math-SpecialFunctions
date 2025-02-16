@@ -1,7 +1,7 @@
 use v6.d;
 use Test;
 
-use lib <. lib>;
+#use lib <. lib>;
 
 use Math::SpecialFunctions;
 
@@ -10,34 +10,41 @@ use Math::SpecialFunctions;
 my $abs-tol = 1.0e-13;
 
 ## 1
-is-approx Γ(-3 / 2), 4 * sqrt(pi) / 3, 'Γ(-3/2)', :$abs-tol;
+subtest {
+    is-approx Γ(-3 / 2), 4 * sqrt(pi) / 3, 'Γ(-3/2)', :$abs-tol;
+
+    is-approx Γ(-1 / 2), -2 * sqrt(pi), 'Γ(-1/2)', :$abs-tol;
+
+    is-approx Γ(1 / 2), sqrt(pi), 'Γ(1/2)', :$abs-tol;
+
+    is-approx Γ(1), 1, 'Γ(1)', :$abs-tol;
+
+    is-approx Γ(3 / 2), sqrt(pi) / 2, 'Γ(3/2)', :$abs-tol;
+
+    is-approx Γ(2), 1, 'Γ(2)', :$abs-tol;
+
+    is-approx Γ(5 / 2), 3 * sqrt(pi) / 4, 'Γ(5/2)', :$abs-tol;
+
+    is-approx Γ(3), 2, 'Γ(3)', :$abs-tol;
+
+    is-approx Γ(7 / 2), 15 * sqrt(pi) / 8, 'Γ(7/2)', :$abs-tol;
+
+    is-approx Γ(4), 6, 'Γ(4)', :$abs-tol;
+}, 'Gamma function';
+
 
 ## 2
-is-approx Γ(-1 / 2), -2 * sqrt(pi), 'Γ(-1/2)', :$abs-tol;
+subtest {
+    isa-ok euler-gamma, Numeric:D;
+    isa-ok euler-gamma(:10prec), Numeric:D;
 
-## 3
-is-approx Γ(1 / 2), sqrt(pi), 'Γ(1/2)', :$abs-tol;
-
-## 4
-is-approx Γ(1), 1, 'Γ(1)', :$abs-tol;
-
-## 5
-is-approx Γ(3 / 2), sqrt(pi) / 2, 'Γ(3/2)', :$abs-tol;
-
-## 6
-is-approx Γ(2), 1, 'Γ(2)', :$abs-tol;
-
-## 7
-is-approx Γ(5 / 2), 3 * sqrt(pi) / 4, 'Γ(5/2)', :$abs-tol;
-
-## 8
-is-approx Γ(3), 2, 'Γ(3)', :$abs-tol;
-
-## 9
-is-approx Γ(7 / 2), 15 * sqrt(pi) / 8, 'Γ(7/2)', :$abs-tol;
-
-## 10
-is-approx Γ(4), 6, 'Γ(4)', :$abs-tol;
+    # From Wolfram Language:
+    # In[200]:= N[EulerGamma, 50]
+    # Out[200]= 0.57721566490153286060651209008240243104215933593992
+    my $eg = 0.57721566490153286060651209008240243104215933593992;
+    is-approx euler-gamma(:10prec), $eg, $abs-tol;
+    is-approx euler-gamma(:20prec), $eg, 10e-40;
+}, "Euler's gamma";
 
 done-testing;
 
