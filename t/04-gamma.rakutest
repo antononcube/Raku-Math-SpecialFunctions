@@ -36,14 +36,14 @@ subtest {
 ## 2
 subtest {
     isa-ok euler-gamma, Numeric:D;
-    isa-ok euler-gamma(:10prec), Numeric:D;
+    isa-ok euler-gamma(:10precision), Numeric:D;
 
     # From Wolfram Language:
     # In[200]:= N[EulerGamma, 50]
     # Out[200]= 0.57721566490153286060651209008240243104215933593992
     my $eg = 0.57721566490153286060651209008240243104215933593992;
     is-approx euler-gamma(:10prec), $eg, $abs-tol;
-    is-approx euler-gamma(:20prec), $eg, 10e-40;
+    is-approx euler-gamma(:40p), $eg, 10e-40;
 }, "Euler's gamma";
 
 done-testing;
