@@ -90,3 +90,20 @@ sub gamma($z) is export {
 }
 
 sub Γ($z) is export { gamma($z) }
+
+#------------------------------------------------------------
+
+my constant $EulerGamma50 = 0.57721566490153286060651209008240243104215933593992;
+my constant $EulerGamma100 = 0.5772156649015328606065120900824024310421593359399235988057672348848677267776646709369470632917467495;
+# See https://math.stackexchange.com/a/129808
+# It might be a good idea to some caching for this function.
+#| Give Euler's constant value (Euler gamma)
+#| C<:prec(:$precision)> -- Precision of the returned value.
+sub euler-gamma(UInt:D :p(:prec(:$precision)) = 16) is export {
+    my $n = ceiling( (1e0 / (10e0 ** -$precision)) ** (1/4e0) );
+    return $EulerGamma50.Num if $precision ≤ 16;
+    return $EulerGamma50 if $precision ≤ 50;
+    return $EulerGamma100 if $precision ≤ 100;
+    return -(1 / (6 * $n ** 3)) + 1 / (6 * $n ** 2) +
+            (1 .. $n).map({ 1 / $_ }).sum - (1 .. $n ** 2).map({ 1 / ($n + $_) }).sum;
+}
